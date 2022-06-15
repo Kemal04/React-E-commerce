@@ -7,7 +7,7 @@ class App extends Component {
 		return (
 			<div>
 				<Navbar />
-				<ShoppingCard />
+				<ShoppingCard x="10"/>
 			</div>
 		)
 	}
