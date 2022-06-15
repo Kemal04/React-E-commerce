@@ -106,9 +106,9 @@ class ShoppingCard extends Component {
     componentDidUpdate(prevProps, prevState) {
         console.log("component Did Update", prevProps, prevState, this.props, this.state)
 
-        if (prevProps.x != this.props.x) {
-            //make http call
-        }
+        // if (prevProps.x != this.props.x) {
+        //     //make http call
+        // }
     }
 
 }

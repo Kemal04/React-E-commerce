@@ -36,5 +36,9 @@ class Product extends Component {
             </div>
         )
     }
+
+    componentWillUnmount() {
+        console.log("component Will Unmount")
+    }
 }
 export default Product
