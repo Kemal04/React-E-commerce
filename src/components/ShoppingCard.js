@@ -52,7 +52,7 @@ class ShoppingCard extends Component {
                     {
                         this.state.products.map((prod) => {
                             return (
-                                <Product key={prod.id} product={prod} onIncrement={this.handleIncrement} onDecrement={this.handleDecrement}>
+                                <Product key={prod.id} product={prod} onIncrement={this.handleIncrement} onDecrement={this.handleDecrement} onDelete={this.handleDelete}>
                                     <button className='btn btn-primary'>Buy Now</button>
                                 </Product>
                             )
@@ -70,7 +70,7 @@ class ShoppingCard extends Component {
         if (allProducts[index].quantity < maxValue) {
             allProducts[index].quantity++;
 
-            this.setState({ product: allProducts });
+            this.setState({ products: allProducts });
         }
     }
 
@@ -81,7 +81,18 @@ class ShoppingCard extends Component {
         if (allProducts[index].quantity > minValue) {
             allProducts[index].quantity--;
 
-            this.setState({ product: allProducts });
+            this.setState({ products: allProducts });
+        }
+    }
+
+    handleDelete = (product) => {
+        let allProducts = [...this.state.products];
+        let index = allProducts.indexOf(product);
+
+        if (window.confirm("Pozmak isleyanizmi")) {
+            allProducts.splice(index, 1);
+
+            this.setState({ products: allProducts });
         }
     }
 

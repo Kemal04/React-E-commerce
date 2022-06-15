@@ -11,7 +11,12 @@ class Product extends Component {
             <div className='col-lg-4 col-4 mb-3'>
                 <div className='card'>
                     <div className='card-body'>
-                        <div className='text-muted'>#{this.state.product.id}</div>
+                        <div className='text-muted'>
+                            #{this.state.product.id}
+                            <span className='pull-right' style={{ cursor: "pointer" }} onClick={() => { this.props.onDelete(this.state.product) }}>
+                                <i className='fa fa-times'></i>
+                            </span>
+                        </div>
                         <div className='card-title h4'>{this.state.product.name}</div>
                         <div className='card-text text-danger'>$ {this.state.product.price}</div>
                     </div>
