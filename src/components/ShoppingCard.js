@@ -103,7 +103,13 @@ class ShoppingCard extends Component {
         console.log("component Did Mount")
     }
 
-    
+    componentDidUpdate(prevProps, prevState) {
+        console.log("component Did Update", prevProps, prevState, this.props, this.state)
+
+        if (prevProps.x != this.props.x) {
+            //make http call
+        }
+    }
 
 }
 export default ShoppingCard
