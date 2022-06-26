@@ -6,44 +6,7 @@ class ShoppingCard extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            products: [
-                {
-                    id: 1,
-                    name: "Iphone",
-                    price: 1000,
-                    quantity: 0,
-                },
-                {
-                    id: 2,
-                    name: "Samsung",
-                    price: 500,
-                    quantity: 0,
-                },
-                {
-                    id: 3,
-                    name: "Xiaomi",
-                    price: 300,
-                    quantity: 0,
-                },
-                {
-                    id: 4,
-                    name: "Ipad Pro",
-                    price: 1500,
-                    quantity: 0,
-                },
-                {
-                    id: 5,
-                    name: "Xbox",
-                    price: 2795,
-                    quantity: 0,
-                },
-                {
-                    id: 6,
-                    name: "Playstation 5",
-                    price: 4560,
-                    quantity: 0,
-                },
-            ],
+            products: [],
         };
     }
 
@@ -99,9 +62,10 @@ class ShoppingCard extends Component {
         }
     }
 
-    componentDidMount() {
-        console.log("component Did Mount")
-    }
+    componentDidMount = async () => {
+        var response = await fetch("http://localhost:5000/products", { method: "GET" });
+        console.log(response)
+    }   
 
     componentDidUpdate(prevProps, prevState) {
         console.log("component Did Update", prevProps, prevState, this.props, this.state)
