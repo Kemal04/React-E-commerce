@@ -63,9 +63,15 @@ class ShoppingCard extends Component {
     }
 
     componentDidMount = async () => {
-        var response = await fetch("http://localhost:5000/products", { method: "GET" });
+        var response = await fetch("http://localhost:5000/products", {
+            method: "GET"
+        });
+
+        var prods = await response.json();
         console.log(response)
-    }   
+
+        this.setState({ products: prods })
+    }
 
     componentDidUpdate(prevProps, prevState) {
         console.log("component Did Update", prevProps, prevState, this.props, this.state)

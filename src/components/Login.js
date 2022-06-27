@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { NavLink } from 'react-router-dom'
 
 class Login extends Component {
 
@@ -27,11 +28,21 @@ class Login extends Component {
         )
     }
 
-    onLoginClick = () => {
+    onLoginClick = async () => {
         console.log(this.state);
-        if (this.state.email === "admin@gmail.com" && this.state.password === "12345678") {
+
+        var response = await fetch(`http://localhost:5000/users?email=${this.state.email}&password=${this.state.password}`,
+            { method: "GET" }
+        );
+
+        var body = await response.json();
+        console.log(body);
+
+        if (body.length > 0) {
             //succcess
-            this.setState({ message: (<span className='text-success'>Successfully Logged-in :)</span>) })
+            this.setState(
+                { message: (<span className='text-success'>Successfully Logged-in :)</span>) },
+            )
         } else {
             //error
             this.setState({ message: (<span className='text-danger'>InValid Login !</span>) })
